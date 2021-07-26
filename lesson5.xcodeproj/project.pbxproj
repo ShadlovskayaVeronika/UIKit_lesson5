@@ -99,13 +99,11 @@
 		F496EDDF26AEE04300D232D3 /* lesson5 */ = {
 			isa = PBXGroup;
 			children = (
-				F496EDE026AEE04300D232D3 /* AppDelegate.swift */,
-				F496EDE226AEE04300D232D3 /* SceneDelegate.swift */,
-				F496EDE426AEE04300D232D3 /* ViewController.swift */,
-				F496EDE626AEE04300D232D3 /* Main.storyboard */,
-				F496EDE926AEE04400D232D3 /* Assets.xcassets */,
-				F496EDEB26AEE04400D232D3 /* LaunchScreen.storyboard */,
-				F496EDEE26AEE04400D232D3 /* Info.plist */,
+				F496EE1026AEE55F00D232D3 /* Base classes */,
+				F496EE1126AEE58000D232D3 /* Helpers */,
+				F496EE1426AEE5E400D232D3 /* Application */,
+				F496EE1526AEE64D00D232D3 /* Storyboards */,
+				F496EE1626AEE69000D232D3 /* Resources */,
 			);
 			path = lesson5;
 			sourceTree = "<group>";
@@ -126,6 +124,64 @@
 				F496EE0426AEE04400D232D3 /* Info.plist */,
 			);
 			path = lesson5UITests;
+			sourceTree = "<group>";
+		};
+		F496EE1026AEE55F00D232D3 /* Base classes */ = {
+			isa = PBXGroup;
+			children = (
+				F496EE1326AEE5A200D232D3 /* Controller */,
+				F496EE1226AEE59300D232D3 /* Model */,
+			);
+			path = "Base classes";
+			sourceTree = "<group>";
+		};
+		F496EE1126AEE58000D232D3 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F496EE1226AEE59300D232D3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F496EE1326AEE5A200D232D3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F496EDE426AEE04300D232D3 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F496EE1426AEE5E400D232D3 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				F496EDE226AEE04300D232D3 /* SceneDelegate.swift */,
+				F496EDEE26AEE04400D232D3 /* Info.plist */,
+				F496EDE026AEE04300D232D3 /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		F496EE1526AEE64D00D232D3 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				F496EDEB26AEE04400D232D3 /* LaunchScreen.storyboard */,
+				F496EDE626AEE04300D232D3 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		F496EE1626AEE69000D232D3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F496EDE926AEE04400D232D3 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
