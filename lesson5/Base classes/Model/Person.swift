@@ -8,11 +8,11 @@
 import Foundation
 
 class Person {
-    let name: String?
-    let birthDate: Date?
-    let age: Int?
-    let sex: Sex?
-    let instagram: String?
+    let name: String
+    let birthDate: Date
+    let age: Int
+    let sex: Sex
+    let instagram: String
     
     init(name: String = "",
          birthDate: String = "",
@@ -31,7 +31,7 @@ class Person {
     }
 }
 
-enum Sex: String {
+enum Sex: String, CaseIterable {
     case female = "Женский"
     case male = "Мужской"
 }

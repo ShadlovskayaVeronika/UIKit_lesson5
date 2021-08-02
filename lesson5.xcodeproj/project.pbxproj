@@ -10,14 +10,14 @@
 		1663BA56677D9532A5C072D5 /* Pods_lesson5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E7C156E9244271F554EE5A /* Pods_lesson5.framework */; };
 		72C8543B3C92BDC4287D3BAC /* Pods_lesson5Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10007B12C2F1167332A8AFDE /* Pods_lesson5Tests.framework */; };
 		D7A189C26B3EBF10F962C8AE /* Pods_lesson5_lesson5UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBC24BA2630A835A88B7361E /* Pods_lesson5_lesson5UITests.framework */; };
+		F448C2E526B7DF480074AB2A /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F448C2E426B7DF480074AB2A /* View.swift */; };
+		F448C2E726B80E290074AB2A /* Calendar extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F448C2E626B80E290074AB2A /* Calendar extension.swift */; };
 		F47AB37226B15ADF007DF0AA /* CellWithPersonInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47AB37126B15ADF007DF0AA /* CellWithPersonInfo.swift */; };
 		F47AB37426B17148007DF0AA /* AddPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47AB37326B17148007DF0AA /* AddPersonViewController.swift */; };
 		F4830DEC26B2937A001DD68A /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4830DEB26B2937A001DD68A /* Interactor.swift */; };
 		F4830DEE26B2938B001DD68A /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4830DED26B2938B001DD68A /* Presenter.swift */; };
 		F4830DF026B2940F001DD68A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4830DEF26B2940F001DD68A /* Router.swift */; };
-		F4830DF226B295B3001DD68A /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4830DF126B295B3001DD68A /* View.swift */; };
 		F4830DF426B2B207001DD68A /* PersonsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4830DF326B2B207001DD68A /* PersonsListViewController.swift */; };
-		F4830DF626B2BE07001DD68A /* CellWithPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4830DF526B2BE07001DD68A /* CellWithPicker.swift */; };
 		F4830DFA26B2CDB7001DD68A /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4830DF926B2CDB7001DD68A /* Helper.swift */; };
 		F4830DFC26B2CF2C001DD68A /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4830DFB26B2CF2C001DD68A /* CellType.swift */; };
 		F490635426B027440027AE72 /* SignInHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F490635326B027440027AE72 /* SignInHeader.swift */; };
@@ -60,14 +60,14 @@
 		6F0B3852CE1C88DAEE7EFB84 /* Pods-lesson5-lesson5UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lesson5-lesson5UITests.release.xcconfig"; path = "Target Support Files/Pods-lesson5-lesson5UITests/Pods-lesson5-lesson5UITests.release.xcconfig"; sourceTree = "<group>"; };
 		84FF69FAA0808041D3C470CC /* Pods-lesson5.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lesson5.debug.xcconfig"; path = "Target Support Files/Pods-lesson5/Pods-lesson5.debug.xcconfig"; sourceTree = "<group>"; };
 		E9157F9A923210C6B25B6491 /* Pods-lesson5Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lesson5Tests.release.xcconfig"; path = "Target Support Files/Pods-lesson5Tests/Pods-lesson5Tests.release.xcconfig"; sourceTree = "<group>"; };
+		F448C2E426B7DF480074AB2A /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		F448C2E626B80E290074AB2A /* Calendar extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar extension.swift"; sourceTree = "<group>"; };
 		F47AB37126B15ADF007DF0AA /* CellWithPersonInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithPersonInfo.swift; sourceTree = "<group>"; };
 		F47AB37326B17148007DF0AA /* AddPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPersonViewController.swift; sourceTree = "<group>"; };
 		F4830DEB26B2937A001DD68A /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
 		F4830DED26B2938B001DD68A /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		F4830DEF26B2940F001DD68A /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		F4830DF126B295B3001DD68A /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		F4830DF326B2B207001DD68A /* PersonsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsListViewController.swift; sourceTree = "<group>"; };
-		F4830DF526B2BE07001DD68A /* CellWithPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithPicker.swift; sourceTree = "<group>"; };
 		F4830DF926B2CDB7001DD68A /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		F4830DFB26B2CF2C001DD68A /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
 		F490635326B027440027AE72 /* SignInHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInHeader.swift; sourceTree = "<group>"; };
@@ -204,7 +204,7 @@
 				F4830DEB26B2937A001DD68A /* Interactor.swift */,
 				F4830DED26B2938B001DD68A /* Presenter.swift */,
 				F4830DEF26B2940F001DD68A /* Router.swift */,
-				F4830DF126B295B3001DD68A /* View.swift */,
+				F448C2E426B7DF480074AB2A /* View.swift */,
 			);
 			path = "Base classes";
 			sourceTree = "<group>";
@@ -213,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				F4830DF926B2CDB7001DD68A /* Helper.swift */,
+				F448C2E626B80E290074AB2A /* Calendar extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -230,8 +231,8 @@
 			isa = PBXGroup;
 			children = (
 				F496EDE426AEE04300D232D3 /* SignInViewController.swift */,
-				F47AB37326B17148007DF0AA /* AddPersonViewController.swift */,
 				F4830DF326B2B207001DD68A /* PersonsListViewController.swift */,
+				F47AB37326B17148007DF0AA /* AddPersonViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -269,7 +270,6 @@
 				F490635326B027440027AE72 /* SignInHeader.swift */,
 				F490635526B0342B0027AE72 /* SignInFooter.swift */,
 				F47AB37126B15ADF007DF0AA /* CellWithPersonInfo.swift */,
-				F4830DF526B2BE07001DD68A /* CellWithPicker.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -523,11 +523,11 @@
 				F4830DEE26B2938B001DD68A /* Presenter.swift in Sources */,
 				F490635626B0342B0027AE72 /* SignInFooter.swift in Sources */,
 				F4830DFC26B2CF2C001DD68A /* CellType.swift in Sources */,
-				F4830DF626B2BE07001DD68A /* CellWithPicker.swift in Sources */,
 				F490635426B027440027AE72 /* SignInHeader.swift in Sources */,
+				F448C2E526B7DF480074AB2A /* View.swift in Sources */,
 				F496EDE326AEE04300D232D3 /* SceneDelegate.swift in Sources */,
 				F47AB37226B15ADF007DF0AA /* CellWithPersonInfo.swift in Sources */,
-				F4830DF226B295B3001DD68A /* View.swift in Sources */,
+				F448C2E726B80E290074AB2A /* Calendar extension.swift in Sources */,
 				F4830DF026B2940F001DD68A /* Router.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

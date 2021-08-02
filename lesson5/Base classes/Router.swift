@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 protocol AnyRouter {
-   // var view: AnyView & UIViewController { get }
     static func start()
 }
 

@@ -34,11 +34,9 @@ class CellWithPersonInfo: UICollectionViewCell {
        
         nameLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.medium)
         
-        daysToBirthdayLabel.text = "30 days"
         daysToBirthdayLabel.textColor = .lightGray
         daysToBirthdayLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
         
-        additionalInfoLabel.text = "30 дней до дня рождения Name"
         additionalInfoLabel.textColor = .lightGray
         additionalInfoLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
         

@@ -10,8 +10,7 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class PersonsListViewController: UICollectionViewController, AnyView {
-    static var personsListViewController = self
-    
+        
     var presenter: AnyPresenter? 
     var persons: [Person] = []
     
@@ -21,7 +20,7 @@ class PersonsListViewController: UICollectionViewController, AnyView {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+",style: .plain, target: self, action: #selector(addNewPerson))
        
         self.clearsSelectionOnViewWillAppear = false
-
+        
         self.collectionView!.register(CellWithPersonInfo.self, forCellWithReuseIdentifier: reuseIdentifier)
         self.collectionView!.backgroundColor = .lightGray
     }
@@ -51,10 +50,28 @@ class PersonsListViewController: UICollectionViewController, AnyView {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CellWithPersonInfo
-        cell.nameLabel.text = persons[indexPath.item].name
+        let person = persons[indexPath.item]
+        let daysTillBirthday = calculateDaysTillBirthday(person.birthDate)
+        cell.nameLabel.text = person.name
+        cell.additionalInfoLabel.text = "До дня рождения \(person.name) осталось \(daysTillBirthday) дней"
+        cell.daysToBirthdayLabel.text = "\(daysTillBirthday) дней"
         return cell
     }
 
+    func calculateDaysTillBirthday(_ birthDate: Date) -> Int{
+        var component = Calendar.current.dateComponents([.year, .month, .day], from: birthDate)
+        component.year = Calendar.current.dateComponents([.year], from: Date()).year
+        var nextBirthDay = Calendar.current.date(from: component)
+        if nextBirthDay! < Date() {
+            component.year = Calendar.current.dateComponents([.year], from: Date()).year! + 1
+            nextBirthDay = Calendar.current.date(from: component)
+        }
+        let date1 = Calendar.current.startOfDay(for: Date())
+        let date2 = Calendar.current.startOfDay(for: nextBirthDay!)
+
+        let components = Calendar.current.dateComponents([.day], from: date1, to: date2)
+        return components.day!
+    }
 }
 
 extension PersonsListViewController: UICollectionViewDelegateFlowLayout {

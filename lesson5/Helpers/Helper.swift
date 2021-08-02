@@ -12,7 +12,8 @@ class Helper {
         return Helper()
     }()
     
-    let signInCells: [CellType] = [.textInput("Email","email"), .passwordInput]
-    let addPersonCells: [CellType] = [.textInput("Имя", "Введите имя"), .dateInput("Дата рождения"),
-                                      .numericInput("Возраст"), .textInput("Instagram", "Добавить")]
+    let signInCells: [(CellType, String, String)] = [(.textInput, "Email", "email"), (.passwordInput, "Пароль", "пароль")]
+    let addPersonCells: [(CellType, String, String)] = [(.textInput, "Имя", "Введите имя"), (.dateInput, "Дата рождения", ""),
+                                      (.enumInput, "Пол", ""), (.numericInput, "Возраст", ""),
+                                      (.textInput, "Instagram", "Добавить")]
 }

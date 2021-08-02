@@ -8,9 +8,9 @@
 import Foundation
 
 enum CellType {
-    case textInput(String, String)
-    case dateInput(String)
-    case numericInput(String)
-    case enumInput(String)
+    case textInput
+    case dateInput
+    case numericInput
+    case enumInput
     case passwordInput
 }

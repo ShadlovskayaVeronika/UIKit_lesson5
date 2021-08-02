@@ -9,7 +9,9 @@ import UIKit
 import SnapKit
 
 class AddPersonViewController: UIViewController, AnyView {
+    
     var presenter: AnyPresenter?
+ 
     lazy var containerView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -50,10 +52,9 @@ class AddPersonViewController: UIViewController, AnyView {
     
     let defaultHeight: CGFloat = 810
     let cells = Helper.app.addPersonCells
-      
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupView()
         setupConstraints()
     }
@@ -67,11 +68,10 @@ class AddPersonViewController: UIViewController, AnyView {
         collectionView.dataSource = self
         collectionView.backgroundColor = .white
         collectionView.register(CellWithInput.self, forCellWithReuseIdentifier: CellWithInput.reusableIdentifier)
-        collectionView.register(CellWithPicker.self, forCellWithReuseIdentifier: CellWithPicker.reusableIdentifier)
         
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
     }
-    func update(with persons: [Person]) {}
+    
     func setupConstraints() {
         view.addSubview(containerView)
         view.addSubview(cancellButton)
@@ -104,21 +104,30 @@ class AddPersonViewController: UIViewController, AnyView {
             make.centerX.equalToSuperview()
         }
     }
+
     
-    @objc func closeView(){
+    @objc func closeView() {
         self.dismiss(animated: true)
     }
     
-    @objc func addPerson(){
+    @objc func addPerson() {
         let visibleCells = collectionView.visibleCells
+      
         let name = (visibleCells[0] as! CellWithInput).textField.text ?? ""
-        let person = Person(name: name)
+        let birthDate = (visibleCells[1] as! CellWithInput).textField.text ?? ""
+        let sexRawValue = (visibleCells[2] as! CellWithInput).textField.text ?? ""
+        let sex = Sex(rawValue: sexRawValue) ?? .female
+        let ageStr = (visibleCells[3] as! CellWithInput).textField.text ?? "0"
+        let age = Int(ageStr) ?? 0
+        let instagram = (visibleCells[4] as! CellWithInput).textField.text ?? ""
+       
+        let person = Person(name: name, birthDate: birthDate, age: age, sex: sex, instagram: instagram)
         (presenter as? PersonsPresenter)?.addNewPerson(person)
         self.dismiss(animated: true)
     }
 }
 
-extension AddPersonViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension AddPersonViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 80)
@@ -128,28 +137,103 @@ extension AddPersonViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //var cellView = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CellWithInput
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellWithInput.reusableIdentifier, for: indexPath) as! CellWithInput
+        let (type, label, placeholder) = cells[indexPath.item]
+        cell.label.text = label
+        cell.textField.placeholder = placeholder
         
-        let cell = cells[indexPath.item]
-      
-        switch cell{
-        case .textInput(let labelText, let placeholder):
-            let cellView = collectionView.dequeueReusableCell(withReuseIdentifier: CellWithInput.reusableIdentifier, for: indexPath) as! CellWithInput
-            cellView.label.text = labelText
-            cellView.textField.placeholder = placeholder
-            return cellView
-        case .dateInput(let labelText):
-            let cellView = collectionView.dequeueReusableCell(withReuseIdentifier: CellWithPicker.reusableIdentifier, for: indexPath) as! CellWithPicker
-            cellView.cellWithInput.label.text = labelText
-            return cellView
-          
+        switch type{
+        case .textInput:
+            break
+        case .dateInput:
+            createDatePicker(for: cell.textField, tag: indexPath.item)
+            cell.label.text = label
         default:
-            let cellView = collectionView.dequeueReusableCell(withReuseIdentifier: CellWithInput.reusableIdentifier, for: indexPath) as! CellWithInput
-            cellView.label.text = "Label"
-            return cellView
+            createToolbar(for: cell.textField)
+            let picker = UIPickerView()
+            cell.textField.inputView = picker
+            picker.tag = indexPath.item
+            picker.dataSource = self
+            picker.delegate = self
+        }
+       
+        return cell
+    }
+    
+    func createToolbar(for textField: UITextField) {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: nil,
+            action: #selector(doneAction))
+        toolbar.setItems([doneButton], animated: true)
+        textField.inputAccessoryView = toolbar
+    }
+    
+    func createDatePicker(for textField: UITextField, tag: Int){
+        var datePicker = UIDatePicker()
+        datePicker = UIDatePicker.init(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width, height: 200))
+        datePicker.addTarget(self, action: #selector(dateChanged), for: .allEvents)
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.minimumDate = Calendar.current.date(byAdding: .year, value: -100, to: Date())
+        datePicker.maximumDate = Calendar.current.date(byAdding: .year, value: 0, to: Date())
+        datePicker.tag = tag
+        textField.inputView = datePicker
+        createToolbar(for: textField)
+    }
+    
+    @objc func doneAction() {
+        view.endEditing(true)
+    }
+    @objc func selectionChanged(sender: UIPickerView) {
+        
+    }
+    @objc func dateChanged(sender: UIDatePicker) {
+        let visibleCells = collectionView.visibleCells
+        let cell = visibleCells[sender.tag] as! CellWithInput
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        cell.textField.text = dateFormatter.string(from: sender.date)
+    }
+}
+extension AddPersonViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+  
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+       1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        switch cells[pickerView.tag].0{
+        case .numericInput:
+            return 100
+        case .enumInput:
+            return Sex.allCases.count
+        default:
+            return 0
         }
     }
     
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        switch cells[pickerView.tag].0{
+        case .numericInput:
+            return String(row)
+        case .enumInput:
+            return Sex.allCases[row].rawValue
+        default:
+            return ""
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let visibleCells = collectionView.visibleCells
+        let cell = visibleCells[pickerView.tag] as! CellWithInput
+        cell.textField.text = self.pickerView(pickerView, titleForRow: row, forComponent: component)
+    }
+}
+
+extension AddPersonViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         2
     }

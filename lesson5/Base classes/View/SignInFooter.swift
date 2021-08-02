@@ -21,13 +21,11 @@ class SignInFooter: UIView {
         configureContents()
       }
       
-      //initWithCode to init view from xib or storyboard
       required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         configureContents()
       }
       
-      //common func to init our view
       private func configureContents() {
         addSubview(signInButton)
         addSubview(faceIdSwitch)
@@ -39,5 +37,4 @@ class SignInFooter: UIView {
         faceIdSwitch.translatesAutoresizingMaskIntoConstraints = false
         faceIdSwitch.leadingAnchor.constraint(equalTo: self.trailingAnchor, constant: -80).isActive = true
       }
-    
 }
